@@ -8,11 +8,12 @@ const reportRoutes = require('./reportRoutes');
 const ratingRoutes = require('./ratingRoutes');
 const categoryRoutes = require('./categoryRoutes');
 
-router.use('/users', userRoutes);
+router.use('/user', userRoutes);
 router.use('/recipes', recipeRoutes);
-router.use('/comments', commentRoutes);
+router.use('/comment', commentRoutes);
 router.use('/report', reportRoutes);
-router.use('/ratings', ratingRoutes);
+router.use('/rating', ratingRoutes);
 router.use('/categories', categoryRoutes);
+
 
 module.exports = router

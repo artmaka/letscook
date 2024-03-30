@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-//const RatingController = require('../controllers/RatingController');
+const ratingController = require('../controllers/ratingController');
 
-router.post('/:recipeId/rating'/*, RatingController.rateRecipe*/);
+router.post('/:recipeId/rating', ratingController.rateRecipe);
 
-module.exports = router;
+module.exports = router
