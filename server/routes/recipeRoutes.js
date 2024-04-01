@@ -5,11 +5,11 @@ const recipeController = require('../controllers/recipeController');
 const ownerMiddleware = require('../middlewares/ownerMiddleware');
 const adminMiddleware = require('../middlewares/adminMiddleware');*/
 
-router.get('/', recipeController.getAllRecipes);
+router.get('/all-recipes', recipeController.getAllRecipes);
 router.get('/:id', recipeController.getRecipeById);
-router.post('/'/*, authMiddleware*/, recipeController.createRecipe);
-router.put('/:id'/*, [authMiddleware, ownerMiddleware]*/, recipeController.updateRecipe);
-router.delete('/:id'/*, [authMiddleware, ownerMiddleware, adminMiddleware]*/, recipeController.deleteRecipe);
+router.post('/create-recipe'/*, authMiddleware*/, recipeController.createRecipe);
+router.put('/:id/update'/*, [authMiddleware, ownerMiddleware]*/, recipeController.updateRecipe);
+router.delete('/:id/delete'/*, [authMiddleware, ownerMiddleware, adminMiddleware]*/, recipeController.deleteRecipe);
 
-
+//
 module.exports = router;

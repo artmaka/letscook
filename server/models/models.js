@@ -18,6 +18,7 @@ const Recipe = sequelize.define('recipe', {
     ingredients: {type: DataTypes.TEXT, allowNull: false},
     calories: {type: DataTypes.INTEGER, allowNull: false},
     process: {type: DataTypes.TEXT, allowNull: false},
+    image:{type: DataTypes.STRING, allowNull: false},
     //date: {type: DataTypes.DATEONLY, defaultValue: sequelize.literal('CURRENT_DATE')}
 })                     
 
