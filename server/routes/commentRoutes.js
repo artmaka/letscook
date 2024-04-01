@@ -5,7 +5,7 @@ const commentController = require('../controllers/commentController');
 const ownerOrAdminMiddleware = require('../middlewares/ownerOrAdminMiddleware');*/
 
 router.get('/:id/comments', commentController.getComment);
-router.post('/:id/comments'/*, authMiddleware*/, commentController.createComment);
+router.post('/:id/create-comment'/*, authMiddleware*/, commentController.createComment);
 router.delete('/:id/comments/:commentId'/*, [authMiddleware, ownerOrAdminMiddleware]*/, commentController.deleteComment);
 
 module.exports = router;
