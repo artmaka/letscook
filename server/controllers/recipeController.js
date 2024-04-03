@@ -1,5 +1,6 @@
 const uuid = require('uuid');
 const path = require('path');
+const fs = require('fs')
 
 const { Recipe, User, Category } = require('../models/models');
 const ApiError = require('../error/ApiError');
@@ -63,34 +64,62 @@ class recipeController {
     async updateRecipe(req, res, next) {
         try {
             const { id } = req.params;
-            const { name, userId, categoryId, description, ingredients, calories, process } = req.body;
+            const { name, categoryId, description, ingredients, calories, process } = req.body;
             const recipe = await Recipe.findByPk(id);
-
+        
             if (!recipe) {
                 return next(ApiError.notFound('Recipe not found'));
             }
-
-            if (recipe.userId !== userId) {
-                return next(ApiError.unauthorized('You are not authorized to update this recipe'));
+    
+            if (req.files && req.files.image) {
+                const { image } = req.files
+                let fileName = uuid.v4() + ".jpg";
+                await image.mv(path.resolve(__dirname, '..', 'static', fileName));
+    
+                if (recipe.image) {
+                    const oldImagePath = path.resolve(__dirname, '..', 'static', recipe.image);
+                    if (fs.existsSync(oldImagePath)) {
+                        fs.unlink(oldImagePath, (error) => {
+                            if (error) {
+                                return next(ApiError.notFound('Recipe not found'));
+                            }
+                        });
+                    }
+                }
+    
+                recipe.image = fileName;
             }
-
-            await recipe.update({ name, userId, categoryId, description, ingredients, calories, process });
-
+    
+            recipe.name = name;
+            recipe.categoryId = categoryId;
+            recipe.description = description;
+            recipe.ingredients = ingredients;
+            recipe.calories = calories;
+            recipe.process = process;
+    
+            await recipe.save();
+        
             return res.json(recipe);
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
     }
+    
 
     async deleteRecipe(req, res, next) {
         try {
             const { id } = req.params;
             const recipe = await Recipe.findByPk(id);
-
+    
             if (!recipe) {
                 return next(ApiError.notFound('Recipe not found'));
             }
-
+    
+            if (recipe.image) {
+                const imagePath = path.resolve(__dirname, '..', 'static', recipe.image);
+                fs.unlinkSync(imagePath);
+            }
+    
             await recipe.destroy();
             return res.json({ message: 'Recipe deleted successfully' });
         } catch (error) {

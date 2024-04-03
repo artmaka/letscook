@@ -1,13 +1,17 @@
 class commentController {
-    async getComment(req, res) {
+    async getAllComment(req, res, next) {
 
     }
 
-    async createComment(req, res) {
+    async createComment(req, res, next) {
 
     }
 
-    async deleteComment(req, res) {
+    async deleteComment(req, res, next) {
+
+    }
+
+    async reportComment(req, res, next) {
 
     }
 }

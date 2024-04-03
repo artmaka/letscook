@@ -21,6 +21,9 @@ class ApiError extends Error {
         return new ApiError(404, message)
     }
 
-    
+    static userIsAlreadyRegistered(message) {
+        return new ApiError(409, message)
+    }
+ 
 }
 module.exports = ApiError
