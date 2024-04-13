@@ -2,7 +2,7 @@ const uuid = require('uuid');
 const path = require('path');
 const fs = require('fs')
 
-const { Recipe, User, Category } = require('../models/models');
+const { Recipe, User, Category, Comment } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class recipeController {
@@ -14,11 +14,12 @@ class recipeController {
             let offset = page * limit - limit;
             let recipes;
 
-            if (!categoryId) {
-                recipes = await Recipe.findAndCountAll({ limit, offset });
+            if (!recipeId) {
+                comments = await Comment.findAndCountAll({ limit, offset });
             } else {
-                recipes = await Recipe.findAndCountAll({ where: { categoryId }, limit, offset });
+                comments = await Comment.findAndCountAll({ where: { recipeId }, limit, offset, include: [{ model: User, attributes: ['username'] }]});
             }
+            
 
             return res.json(recipes);
         } catch (error) {
@@ -49,12 +50,25 @@ class recipeController {
 
     async createRecipe(req, res, next) {
         try {
-            const { name, userId, categoryId, description, ingredients, calories, process } = req.body;
+            const { name, categoryId, description, ingredients, calories, process } = req.body;
+            const userId = req.user.id;
             const { image } = req.files;
-            let fileName = uuid.v4() + ".jpg";
-            image.mv(path.resolve(__dirname, '..', 'static', fileName));
-
-            const recipe = await Recipe.create({ name, userId, categoryId, description, ingredients, calories, process, image: fileName });
+            const fileName = uuid.v4() + ".jpg";
+            
+            const uploadPath = path.resolve(__dirname, '..', 'static', fileName);
+            
+            await image.mv(uploadPath);
+            
+            const recipe = await Recipe.create({ 
+                name, 
+                userId, 
+                categoryId, 
+                description, 
+                ingredients, 
+                calories, 
+                process, 
+                image: fileName 
+            });
             return res.json(recipe);
         } catch (error) {
             next(ApiError.internalServerError(error.message));
@@ -63,6 +77,7 @@ class recipeController {
 
     async updateRecipe(req, res, next) {
         try {
+            
             const { id } = req.params;
             const { name, categoryId, description, ingredients, calories, process } = req.body;
             const recipe = await Recipe.findByPk(id);
@@ -108,17 +123,24 @@ class recipeController {
 
     async deleteRecipe(req, res, next) {
         try {
-            const { id } = req.params;
-            const recipe = await Recipe.findByPk(id);
+            const { id } = req.params
+            const recipe = await Recipe.findByPk(id)
     
             if (!recipe) {
                 return next(ApiError.notFound('Recipe not found'));
             }
+
     
             if (recipe.image) {
                 const imagePath = path.resolve(__dirname, '..', 'static', recipe.image);
                 fs.unlinkSync(imagePath);
             }
+
+            const comments = await Comment.findAll({ where: { recipeId: id } });
+
+            await Promise.all(comments.map(async (comment) => {
+                await comment.destroy();
+            }))
     
             await recipe.destroy();
             return res.json({ message: 'Recipe deleted successfully' });
@@ -126,6 +148,7 @@ class recipeController {
             next(ApiError.internalServerError(error.message));
         }
     }
+
 }
 
 module.exports = new recipeController();

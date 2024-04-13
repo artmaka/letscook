@@ -2,8 +2,17 @@ const {Report} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class reportController {
+
+    async putReport(req, res, next) {
+        try {   
+            
+        } catch (error) {
+            return next(ApiError.internalServerError(error.message));
+        }
+
+    }
     
-    async getReports(res, next) {
+    async getReports(req, res, next) {
         try {   
             const getAllReports = await Report.findAll()
             return res.json(getAllReports)
@@ -14,7 +23,11 @@ class reportController {
     }
 
     async processReport(req, res, next) {
-
+        try {   
+           
+        } catch (error) {
+            return next(ApiError.internalServerError(error.message));
+        }
     }
 
     

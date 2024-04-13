@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models/models');
+const { User, Recipe, Comment} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 const generateJwt = (id, email, role) => {
@@ -36,7 +36,7 @@ class userController {
             return next(ApiError.notFound('User is not found'));
         }
     
-        const comparePassword = bcrypt.compareSync(password, user.password); // Исправлено здесь
+        const comparePassword = bcrypt.compareSync(password, user.password); 
     
         if (!comparePassword) {
             return next(ApiError.notFound('Uncorrect passsword'));
@@ -53,6 +53,21 @@ class userController {
         } catch (error) {
             return next(ApiError.internalServerError(error.message)); 
         } 
+    }
+
+    async getAllUser(req, res, next) {
+        try {   
+            const userId = req.params.userId;
+
+            const userComments = await Comment.findAll({ where: { userId } });
+            const recipeIds = userComments.map(comment => comment.recipeId);
+
+            const userRecipes = await Recipe.findAll({ where: { id: recipeIds } });
+
+            res.json(userRecipes);
+        } catch (error) {
+            return next(ApiError.internalServerError(error.message));
+        }
     }
 }
 

@@ -13,7 +13,7 @@ class categoryController {
         }
     }
     
-    async getAllCategories(res, next) {
+    async getAllCategories(req, res, next) {
         try {
             const allCategories = await Category.findAll()
             return res.json(allCategories)

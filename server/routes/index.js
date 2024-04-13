@@ -5,14 +5,12 @@ const userRoutes = require('./userRoutes');
 const recipeRoutes = require('./recipeRoutes');
 const commentRoutes = require('./commentRoutes');
 const reportRoutes = require('./reportRoutes');
-const ratingRoutes = require('./ratingRoutes');
 const categoryRoutes = require('./categoryRoutes');
 
 router.use('/user', userRoutes);
 router.use('/recipes', recipeRoutes);
 router.use('/comment', commentRoutes);
 router.use('/report', reportRoutes);
-router.use('/rating', ratingRoutes);
 router.use('/categories', categoryRoutes);
 
 
