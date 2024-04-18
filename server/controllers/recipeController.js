@@ -135,10 +135,15 @@ class recipeController {
             }
 
             const comments = await Comment.findAll({ where: { recipeId: id } });
+            const reports = await Report.findAll({ where: { recipeId: id } });
 
             await Promise.all(comments.map(async (comment) => {
                 await comment.destroy();
-            }))
+            }));
+
+            await Promise.all(reports.map(async (report) => {
+                await report.destroy();
+            }));
     
             await recipe.destroy();
             return res.json({ message: 'Recipe deleted successfully' });

@@ -44,8 +44,7 @@ class CommentController {
     };
     
     async deleteComment(req, res, next) {
-        try {
-            const userId = req.user.id; 
+        try {; 
             const { commentId } = req.params;
     
             if (isNaN(commentId)) {
@@ -57,11 +56,13 @@ class CommentController {
             if (!comment) {
                 return next(ApiError.notFound('Comment not found'));
             }
-    
-            if (comment.userId !== userId) {
-                return next(ApiError.forbidden('You are not authorized to delete this comment'));
-            }
-    
+
+            const reports = await Report.findAll({ where: { commentId : id } });
+
+            await Promise.all(reports.map(async (report) => {
+                await report.destroy();
+            }));
+
             await comment.destroy();
             return res.json({ message: 'Comment deleted successfully' });
         } catch (error) {

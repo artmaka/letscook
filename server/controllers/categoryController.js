@@ -4,14 +4,9 @@ const ApiError = require('../error/ApiError');
 class categoryController {
     async createCategory(req, res, next) {
         try {
-            const {name} = req.body;
+            const { name } = req.body;
 
-            const existingCategory = await Category.findOne({ name });
-            if (existingCategory) {
-                return next(ApiError.alreadyExist('Category is already exist' ));
-            }
-
-            const category = await Category.create({name});
+            const category = await Category.create({ name });
 
             return res.json(category);
         } catch (error) {
