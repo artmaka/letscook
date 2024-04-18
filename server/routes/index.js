@@ -1,5 +1,5 @@
-const Router = require('express')
-const router = new Router()
+const Router = require('express');
+const router = new Router();
 
 const userRoutes = require('./userRoutes');
 const recipeRoutes = require('./recipeRoutes');
@@ -14,4 +14,4 @@ router.use('/report', reportRoutes);
 router.use('/categories', categoryRoutes);
 
 
-module.exports = router
+module.exports = router;

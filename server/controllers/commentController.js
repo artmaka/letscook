@@ -1,19 +1,15 @@
 const ApiError = require('../error/ApiError');
 const { Comment, User, Recipe, Report } = require('../models/models');
 
-class commentController {
+class CommentController {
     async getAllComments(req, res, next) {
         try {
             const { recipeId } = req.params;
             const comments = await Comment.findAll({ 
-            where: { recipeId },
-            include: [{ model: User, attributes: ['username'] }]
-        });
+                where: { recipeId },
+                include: [{ model: User, attributes: ['username'] }]
+            });
 
-        if (!comments || comments.length === 0) {
-            return next(ApiError.notFound('Comments not found for this recipe'));
-        }
-    
             if (!comments || comments.length === 0) {
                 return next(ApiError.notFound('Comments not found for this recipe'));
             }
@@ -22,7 +18,7 @@ class commentController {
         } catch (error) {
             return next(ApiError.internalServerError(error.message));
         }
-    }
+    };
 
     async createComment(req, res, next) {
         try {
@@ -45,19 +41,18 @@ class commentController {
         } catch (error) {
             return next(ApiError.internalServerError(error.message));
         }
-    }
+    };
     
     async deleteComment(req, res, next) {
         try {
             const userId = req.user.id; 
             const { commentId } = req.params;
-
     
             if (isNaN(commentId)) {
                 return next(ApiError.notFound('Invalid comment id'));
             }
     
-            const comment = await Comment.findOne();
+            const comment = await Comment.findByPk(commentId);
     
             if (!comment) {
                 return next(ApiError.notFound('Comment not found'));
@@ -72,7 +67,7 @@ class commentController {
         } catch (error) {
             return next(ApiError.internalServerError(error.message));
         }
-    }
+    };
     
     async reportComment(req, res, next) {
         try {
@@ -95,7 +90,7 @@ class commentController {
         } catch (error) {
             return next(ApiError.internalServerError(error.message));
         }
-    }
-}
+    };
+};
 
-module.exports = new commentController()
+module.exports = new CommentController();

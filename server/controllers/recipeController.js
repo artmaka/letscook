@@ -25,7 +25,7 @@ class recipeController {
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
-    }
+    };
 
     async getRecipeById(req, res, next) {
         try {
@@ -46,7 +46,7 @@ class recipeController {
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
-    }
+    };
 
     async createRecipe(req, res, next) {
         try {
@@ -73,11 +73,10 @@ class recipeController {
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
-    }
+    };
 
     async updateRecipe(req, res, next) {
         try {
-            
             const { id } = req.params;
             const { name, categoryId, description, ingredients, calories, process } = req.body;
             const recipe = await Recipe.findByPk(id);
@@ -87,10 +86,10 @@ class recipeController {
             }
     
             if (req.files && req.files.image) {
-                const { image } = req.files
+                const { image } = req.files;
                 let fileName = uuid.v4() + ".jpg";
                 await image.mv(path.resolve(__dirname, '..', 'static', fileName));
-    
+            
                 if (recipe.image) {
                     const oldImagePath = path.resolve(__dirname, '..', 'static', recipe.image);
                     if (fs.existsSync(oldImagePath)) {
@@ -101,10 +100,10 @@ class recipeController {
                         });
                     }
                 }
-    
+            
                 recipe.image = fileName;
             }
-    
+            
             recipe.name = name;
             recipe.categoryId = categoryId;
             recipe.description = description;
@@ -118,13 +117,12 @@ class recipeController {
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
-    }
+    };
     
-
     async deleteRecipe(req, res, next) {
         try {
-            const { id } = req.params
-            const recipe = await Recipe.findByPk(id)
+            const { id } = req.params;
+            const recipe = await Recipe.findByPk(id);
     
             if (!recipe) {
                 return next(ApiError.notFound('Recipe not found'));
@@ -147,8 +145,7 @@ class recipeController {
         } catch (error) {
             next(ApiError.internalServerError(error.message));
         }
-    }
-
-}
+    };
+};
 
 module.exports = new recipeController();
