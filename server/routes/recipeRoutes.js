@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const recipeController = require('../controllers/recipeController');
-/*const authMiddleware = require('../middlewares/authMiddleware');
-const ownerMiddleware = require('../middlewares/ownerMiddleware');
-const adminMiddleware = require('../middlewares/adminMiddleware');*/
+const authMiddleware = require('../middleware/authMiddleware');
+const checkMiddleware = require('../middleware/checkRoleMiddleware');
 
-router.get('/', recipeController.getAllRecipes);
+router.get('/all-recipes', recipeController.getAllRecipes);
 router.get('/:id', recipeController.getRecipeById);
-router.post('/'/*, authMiddleware*/, recipeController.createRecipe);
-router.put('/:id'/*, [authMiddleware, ownerMiddleware]*/, recipeController.updateRecipe);
-router.delete('/:id'/*, [authMiddleware, ownerMiddleware, adminMiddleware]*/, recipeController.deleteRecipe);
+router.post('/create-recipe', authMiddleware, recipeController.createRecipe);
+router.get('/:id/update', authMiddleware, checkMiddleware('USER'), checkMiddleware('ADMIN'), recipeController.updateRecipe);
+router.delete('/:id/delete', authMiddleware, checkMiddleware('USER'), checkMiddleware('ADMIN'), recipeController.deleteRecipe);
 
-
-module.exports = router;
+module.exports = router; 
