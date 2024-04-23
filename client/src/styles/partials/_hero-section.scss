@@ -1,0 +1,19 @@
+.section.hero{
+    .typography{
+        padding-right: 1em;
+    }
+    .gallery{
+        object-fit: cover;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1vw;
+        .custom-image{
+            animation: getAnimationDuration(.3s) popOut forwards;
+            @for $i from 1 through 9 {
+                &:nth-child(#{$i}) {
+                    animation-delay: .5s;
+                }
+            }
+        }
+    }
+}

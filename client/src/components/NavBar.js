@@ -36,6 +36,7 @@ export default function Navbar() {
         <>
         <div className="navbar container">
             <a href="#!" className="logo">Let's c<span>oo</span>k!</a>
+            <input type="text" placeholder="Поиск..." className="search-bar" />
             <div className="nav-links">
                 { links.map(link => (
                     <a href="#!" key={link.className}>{link.name}</a>
