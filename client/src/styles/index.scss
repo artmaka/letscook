@@ -1,7 +1,7 @@
 :root{
     --background-color: #fff;
     --background-light: #BFBDC0;
-    --shadow-color: #F0F4F9;
+    --shadow-color: #d4d4d4;
     --primary-color: #EC9704;
     --text-color: #0A0A0A;
     --text-light: #583E26;
@@ -32,21 +32,24 @@ a{
     text-decoration: none;
 }
 
-.btn{
+.btn {
     border: none;
     outline: none;
     background-color: var(--primary-color);
-    color:#fff;
+    color: #fff;
     padding: .5em 1em;
     text-transform: uppercase;
     font-size: 1em;
     letter-spacing: 1px;
     border-radius: 3px;
     box-shadow: 0 1px 6px var(--shadow-color);
-    &:hover{
-        box-shadow: 0 1px 3px var(--shadow-color);
-    }
+    transition: box-shadow 0.3s ease; 
 }
+
+.btn:hover {
+    box-shadow: 0 3px 6px var(--shadow-color);
+}
+
 
 .custom-image{
     
@@ -92,16 +95,15 @@ a{
 @import "partials/quote-section";
 @import "partials/recipes-section";
 
+@import "partials/category/category-section";
+
 .footer{
-    width: calc(100% + 30vw); 
-    margin-left: -15vw; 
-    margin-right: -15vw;
     margin-bottom: -15vw; 
     background-color: #0A0A0A;
     color: #fff;
     padding-block: 3em;
     display: grid;
-    grid-template-columns: 2fr  1fr 15px 1fr;
+    grid-template-columns: 2fr 1fr 15px 1fr;
     grid-gap: 1em;
     .footer-section{
         p{

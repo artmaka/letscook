@@ -1,0 +1,41 @@
+.section.category{
+    display: block;
+}
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px,  1fr)); 
+    grid-gap: 20px;
+    border-radius: 5px;
+}
+
+.category-card{
+    display: flex;
+    flex-direction: column; 
+    background-color: var(--background-color);
+    border-radius: 5px;
+    img {
+        margin-top: 0.5em; 
+        border-radius: 10px;
+        box-shadow: 0 3px 6px var(--shadow-color);
+        max-width: 100%; 
+        object-fit: cover;
+        height: 250px; 
+    }
+}
+
+.category-info {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left; 
+    align-items: left; 
+    text-align: left;
+    .category-name {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--text-color);
+        margin-top: 0; 
+        margin-bottom: 0.5em;
+    }
+}

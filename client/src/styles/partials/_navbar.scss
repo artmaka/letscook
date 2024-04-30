@@ -44,14 +44,7 @@
             }
         }
     }
-    .search-bar {
-        width: 250px;
-        border: 1.5px solid var(--primary-color);
-        border-radius: 15px; 
-        padding: 8px 12px; 
-        font-size: 14px; 
-        outline: none; 
-    }
+
     
     .search-bar::placeholder {
         color: var(--text-light); 
