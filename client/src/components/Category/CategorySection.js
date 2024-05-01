@@ -1,7 +1,8 @@
-import CategoryCard from "./CategoryCard"
+import { Link } from "react-router-dom";
+import CategoryCard from "./CategoryCard";
 
-export default function CategorySection(){
-    const category = [
+export default function CategorySection() {
+    const categories = [
         {
             name: "Закуски",
             img: "img/category-img/img_1.jpg",
@@ -34,14 +35,18 @@ export default function CategorySection(){
             name: "Напитки",
             img: "img/category-img/img_8.jpg",
         },
-    ]
+    ];
 
-    return(
+    return (
         <div className="section category">
-            <h1 className="title">Категории </h1>
+            <h1 className="title">Категории</h1>
             <div className="category-container">
-            {category.map(category => <CategoryCard key={category.name} category={category}/>)}
+                {categories.map(category => (
+                    <Link to="/all-recipes" key={category.name}>
+                        <CategoryCard category={category} />
+                    </Link>
+                ))}
             </div>
         </div>
-    )
+    );
 }
