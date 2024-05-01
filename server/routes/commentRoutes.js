@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const commentController = require('../controllers/commentController');
-/*const authMiddleware = require('../middlewares/authMiddleware');
-const ownerOrAdminMiddleware = require('../middlewares/ownerOrAdminMiddleware');*/
+const authMiddleware = require('../middleware/authMiddleware');
+const checkMiddleware = require('../middleware/checkRoleMiddleware');
 
-router.get('/:id/comments', commentController.getComment);
-router.post('/:id/create-comment'/*, authMiddleware*/, commentController.createComment);
-router.delete('/:id/comments/:commentId'/*, [authMiddleware, ownerOrAdminMiddleware]*/, commentController.deleteComment);
+router.get('/:recipeId/comments', commentController.getAllComments);
+router.post('/:recipeId/create-comment', authMiddleware, commentController.createComment);
+router.delete('/delete/:commentId', authMiddleware, checkMiddleware('USER'), checkMiddleware('ADMIN'), commentController.deleteComment);
+router.put('/report/:commentId', authMiddleware, commentController.reportComment);
 
 module.exports = router;
