@@ -15,7 +15,7 @@ import CreateCategory from "./pages/CreateCategory";
 import CreateRecipe from './pages/CreateRecipe';
 import CreateReport from './pages/CreateReport';
 import DoReport from "./pages/DoReport";
-import Main from "./pages/Home";
+import Main from "./pages/Main";
 import Login from "./pages/Login";
 import RecipeByID from "./pages/RecipeByID";
 import Registration from "./pages/Registration";

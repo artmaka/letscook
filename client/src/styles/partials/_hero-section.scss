@@ -8,7 +8,11 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 1vw;
         .custom-image{
-            animation: getAnimationDuration(.3s) popOut forwards;
+            border-radius: 3px;
+            overflow: hidden;
+            transform: scale(0);
+            opacity: 0;
+            animation: getAnimationDuration(.2s) popOut forwards;
             @for $i from 1 through 9 {
                 &:nth-child(#{$i}) {
                     animation-delay: .5s;

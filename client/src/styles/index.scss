@@ -22,10 +22,7 @@
 body{
     font-size: var(--font-size);
     font-family: 'Jost';
-}
-
-.img{
-    object-fit: cover;
+    
 }
 
 a{
@@ -95,7 +92,10 @@ a{
 @import "partials/quote-section";
 @import "partials/recipes-section";
 
+
 @import "partials/category/category-section";
+@import "partials/all-recipes/all-recipes";
+@import "partials/create-category/create-category";
 
 .footer{
     margin-bottom: -15vw; 
@@ -127,7 +127,7 @@ a{
 }
 
 @import "partials/animations.scss";
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 850px){
     .navbar{
         .nav-links{
             display: none;
@@ -140,3 +140,4 @@ a{
         box-shadow: 0 5px 10px var(--shadow-color);
     }
 }
+

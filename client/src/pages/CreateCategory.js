@@ -1,9 +1,9 @@
+import CreateCategoryForm from "../components/CreateCategory/CreateCategoryForm"
 
-
-export default function CreateRecipe() {
+export default function CreateCategory() {
     return(
         <div>
-            
+            <CreateCategoryForm/>
         </div>
     )
 }
