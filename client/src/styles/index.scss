@@ -47,7 +47,6 @@ a{
     box-shadow: 0 3px 6px var(--shadow-color);
 }
 
-
 .custom-image{
     
     height: 0;
@@ -86,17 +85,23 @@ a{
         width: 50%;
     }
 }
+.form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
 
 .form {
+    margin-left: 20vm;
     height: 60vh;
 }
 
 .input-field {
-    border: 2px solid --primary-color; /* Цвет рамки */
-    border-radius: 5px; /* Скругление углов */
-    padding: 4px; /* Внутренний отступ */
-    font-size: 16px; /* Размер шрифта */
-    outline: none; /* Убираем контур фокуса */
+    border: 2px solid --primary-color; 
+    border-radius: 5px; 
+    padding: 4px; 
+    font-size: 16px; 
+    outline: none; 
 }
 
 @import "partials/hero-section";
@@ -110,6 +115,7 @@ a{
 @import "partials/create-category/create-category";
 @import "partials/login/login-form";
 @import "partials/registration/reg-form";
+@import "partials/profile/profile";
 
 .footer{
     

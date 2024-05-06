@@ -25,33 +25,35 @@ export default function LoginForm() {
     };
 
     return (
-        <div className='form'>
-            <h1>Вход</h1>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label className='login-name'>Почта:</label>
-                    <input className='input-field'
-                        type="email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label className='login-name'>Пароль:</label>
-                    <input className='input-field'
-                        type="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
-                    />
-                </div>
-                <button className='btn-log-form' type="submit">Вход</button>
-            </form>
+        <div className='form-container'>
+            <div className='form'>
+                <h1>Вход</h1>
+                <form onSubmit={handleLogin}>
+                    <div>
+                        <label className='login-name'>Почта:</label>
+                        <input className='input-field'
+                            type="email"
+                            value={email}
+                            onChange={handleEmailChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label className='login-name'>Пароль:</label>
+                        <input className='input-field'
+                            type="password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            required
+                        />
+                    </div>
+                    <button className='btn-log-form' type="submit">Вход</button>
+                </form>
                 <p>
                     Нет аккаунта?{' '}
                     <button className='btn-reg-form' onClick={handleRegistrationClick}>Зарегистрироваться</button>
                 </p>
-        </div>
+            </div>
+        </div>  
     );
 }

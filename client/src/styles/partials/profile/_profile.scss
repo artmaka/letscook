@@ -1,0 +1,32 @@
+.user-info {
+    flex-grow: 1;
+}
+
+.user-details {
+    margin-bottom: 20px;
+}
+
+.user-details p {
+    margin: 5px 0;
+}
+
+.user-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-actions button {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-actions button:hover {
+    background-color: var(--text-light);
+}
