@@ -15,7 +15,7 @@ import CreateCategory from "./pages/CreateCategory";
 import CreateRecipe from './pages/CreateRecipe';
 import CreateReport from './pages/CreateReport';
 import DoReport from "./pages/DoReport";
-import Home from "./pages/Home";
+import Main from "./pages/Home";
 import Login from "./pages/Login";
 import RecipeByID from "./pages/RecipeByID";
 import Registration from "./pages/Registration";
@@ -35,7 +35,7 @@ function App() {
           <Route path="/create-recipe" element={<CreateRecipe/>} />
           <Route path="/create-report" element={<CreateReport/>} />
           <Route path="/do-report" element={<DoReport/>} />
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Main/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/recipe-by-id" element={<RecipeByID/>} />
           <Route path="/registration" element={<Registration/>} />
