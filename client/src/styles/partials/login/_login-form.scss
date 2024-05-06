@@ -1,19 +1,29 @@
-.category-form {
+.login-name {
     display: block;
-}
-
-.name {
-    display: block;
-    margin-top: .5em;
+    margin-top: .2em;
     margin-bottom: .2em;
-    margin-right: .5em;
     line-height: 30px;
     font-size: 1.5em;
     font-weight: bold;
     color: var(--text-color);
 }
 
-.btn-form{
+.btn-reg-form {
+    margin-top: 1em;
+    margin-left: 1em;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: .5em 1em;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    transition: box-shadow 0.3s ease;
+}
+.btn-log-form {
     margin-top: 1em;
     border: none;
     outline: none;
@@ -28,6 +38,4 @@
     transition: box-shadow 0.3s ease;
 }
 
-.btn-form:hover {
-    box-shadow: 0 3px 6px var(--shadow-color);
-}
+

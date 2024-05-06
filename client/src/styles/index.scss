@@ -87,6 +87,18 @@ a{
     }
 }
 
+.form {
+    height: 60vh;
+}
+
+.input-field {
+    border: 2px solid --primary-color; /* Цвет рамки */
+    border-radius: 5px; /* Скругление углов */
+    padding: 4px; /* Внутренний отступ */
+    font-size: 16px; /* Размер шрифта */
+    outline: none; /* Убираем контур фокуса */
+}
+
 @import "partials/hero-section";
 @import "partials/improve-skills";
 @import "partials/quote-section";
@@ -96,8 +108,11 @@ a{
 @import "partials/category/category-section";
 @import "partials/all-recipes/all-recipes";
 @import "partials/create-category/create-category";
+@import "partials/login/login-form";
+@import "partials/registration/reg-form";
 
 .footer{
+    
     margin-bottom: -15vw; 
     background-color: #0A0A0A;
     color: #fff;

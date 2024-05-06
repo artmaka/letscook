@@ -26,7 +26,7 @@ export default function CreateCategoryForm() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label className="name">Имя категории:</label>
-                    <input
+                    <input className='input-field'
                         type="text"
                         id="categoryName"
                         name="categoryName"
@@ -37,7 +37,7 @@ export default function CreateCategoryForm() {
                 </div>
                 <div>
                     <label className="name">Изображение категории:</label>
-                    <input
+                    <input className='input-field'
                         type="file"
                         id="categoryImage"
                         name="categoryImage"
