@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function RegistrationForm() {
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,6 +23,10 @@ export default function RegistrationForm() {
     const handleRegister = (event) => {
         event.preventDefault();
 
+    };
+
+    const handleLoginClick = () => {
+        navigate('/login');
     };
 
     return (
@@ -57,7 +64,7 @@ export default function RegistrationForm() {
             </form>
                 <p>
                     Уже есть аккаунт?{' '}
-                    <button className='btn-reg-log-form'>Войти</button>
+                    <button className='btn-reg-log-form' onClick={handleLoginClick}>Войти</button>
                 </p>
         </div>
     );
