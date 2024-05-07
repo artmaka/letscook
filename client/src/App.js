@@ -19,7 +19,6 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import RecipeByID from "./pages/RecipeByID";
 import Registration from "./pages/Registration";
-import Settings from "./pages/Settings";
 import UpdateRecipe from "./pages/UpdateRecipe";
 import Profile from './pages/Profile';
 
@@ -40,7 +39,6 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/recipe-by-id" element={<RecipeByID/>} />
           <Route path="/registration" element={<Registration/>} />
-          <Route path="/settings" element={<Settings />} />
           <Route path="/update-recipe" element={<UpdateRecipe/>} />
           <Route path="/profile" element={<Profile/>} />
         </Routes>

@@ -1,12 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useState } from "react"
 import Sidebar from "./Sidebar"
 
-import {faHome, faUser, faList, faCog } from "@fortawesome/free-solid-svg-icons"
+import {faHome, faUser, faList } from "@fortawesome/free-solid-svg-icons"
 
 export default function Navbar() {
-    const location = useLocation()
  
     const [showSidebar, setShowSidebar] = useState(false)
     const links = [
@@ -24,11 +23,6 @@ export default function Navbar() {
             name: "Профиль",
             path: "/profile",
             icon: faUser
-        },
-        {
-            name: "Настройки",
-            path: "/settings",
-            icon: faCog
         },
     ]
 
