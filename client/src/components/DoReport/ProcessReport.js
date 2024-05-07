@@ -20,7 +20,6 @@ export default function ProcessReport({ report }) {
         <div>
             <h1>Обработка жалобы</h1>
             <div className='btn-form'>
-                <h2>Жалоба пользователя:</h2>
                 <p>{report}</p>
             </div>
             <div>
