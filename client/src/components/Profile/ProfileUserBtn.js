@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 export default function ProfileUserBtn({ }) {
+    const navigate = useNavigate();
+
+    const handleCreateRecipeClick = () => {
+        navigate('/create-recipe');
+    };
     return (
         <div className='form'>
             <div className="section hero">
@@ -14,7 +21,7 @@ export default function ProfileUserBtn({ }) {
             </div>
             <div className="user-actions">
                 <button>Мои рецепты</button>
-                <button>Создать рецепт</button>
+                <button onClick={handleCreateRecipeClick}>Создать рецепт</button>
                 <button>Комментарии</button>
                 <button>Выйти из аккаунта</button>
             </div>

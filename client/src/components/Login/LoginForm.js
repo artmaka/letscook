@@ -25,7 +25,6 @@ export default function LoginForm() {
     };
 
     return (
-        <div className='form-container'>
             <div className='form'>
                 <h1>Вход</h1>
                 <form onSubmit={handleLogin}>
@@ -54,6 +53,5 @@ export default function LoginForm() {
                     <button className='btn-reg-form' onClick={handleRegistrationClick}>Зарегистрироваться</button>
                 </p>
             </div>
-        </div>  
     );
 }

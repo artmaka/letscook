@@ -1,5 +1,3 @@
-
-
 export default function AllReports() {
     return(
         <div>

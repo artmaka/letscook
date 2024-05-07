@@ -1,0 +1,22 @@
+.create-recipe-name{
+    display: block;
+    margin-top: .2em;
+    margin-bottom: .1em;
+    line-height: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.btn-create-recipe{
+    margin-top: .3em;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: .5em 1em;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px var(--shadow-color)
+}
