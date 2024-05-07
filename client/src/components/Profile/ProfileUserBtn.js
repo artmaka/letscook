@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line
 export default function ProfileUserBtn({ }) {
     const navigate = useNavigate();
 
     const handleCreateRecipeClick = () => {
         navigate('/create-recipe');
     };
+
+    const handleRecipeClick = () => {
+        navigate('/all-recipes');
+    };
+    
     return (
         <div className='form'>
             <div className="section hero">
@@ -20,7 +26,7 @@ export default function ProfileUserBtn({ }) {
                 </div>
             </div>
             <div className="user-actions">
-                <button>Мои рецепты</button>
+                <button onClick={handleRecipeClick}>Мои рецепты</button>
                 <button onClick={handleCreateRecipeClick}>Создать рецепт</button>
                 <button>Комментарии</button>
                 <button>Выйти из аккаунта</button>
