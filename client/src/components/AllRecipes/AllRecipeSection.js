@@ -1,6 +1,9 @@
 import AllRecipeCard from "./AllRecipeCard"
+import { useNavigate } from "react-router-dom";
 
 export default function AllRecipeSection(){
+    const navigate = useNavigate();
+
     const recipes = [
         {
             name: "Классические мясные фрикадельки",
@@ -27,13 +30,17 @@ export default function AllRecipeSection(){
             calories: "146",
         }
     ]
+
+    const handleRecipeByIdClick = () => {
+        navigate('/recipe-by-id');
+    };
     
 
     return(
         <div className="section recipes">
             <h1 className="title">Все рецепты</h1>
-            <div className="recipe-container">
-            {recipes.map(recipes => <AllRecipeCard key={recipes.name} recipes={recipes}/>)}
+            <div onClick={handleRecipeByIdClick} className="recipe-container">
+                {recipes.map(recipes => <AllRecipeCard key={recipes.name} recipes={recipes}/>)}
             </div>
         </div>
     )

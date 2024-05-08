@@ -20,9 +20,7 @@ export default function LoginForm() {
         
     };
 
-    const handleRegistrationClick = () => {
-        navigate('/registration');
-    };
+    U4
 
     return (
             <div className='form'>
