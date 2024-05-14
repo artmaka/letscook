@@ -26,7 +26,7 @@ export default function RegistrationForm() {
     };
 
     const handleLoginClick = () => {
-        navigate('/login');
+        navigate('/user/login');
     };
 
     return (

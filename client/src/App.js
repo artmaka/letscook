@@ -36,7 +36,7 @@ function App() {
           <Route path="/create-report" element={<CreateReport/>} />
           <Route path="/do-report" element={<DoReport/>} />
           <Route path="/" element={<Main/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="api/user/login" element={<Login/>} />
           <Route path="/recipe-by-id" element={<RecipeByID/>} />
           <Route path="/registration" element={<Registration/>} />
           <Route path="/update-recipe" element={<UpdateRecipe/>} />
