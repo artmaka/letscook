@@ -1,0 +1,41 @@
+.btn-do-report{
+    margin-top: 1vw;
+    margin-right: .5vw;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: .5em 1em;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    transition: box-shadow 0.3s ease; 
+    .btn-do-repor:hover {
+        box-shadow: 0 3px 6px var(--shadow-color);
+    }
+}
+
+.btn-delete-report{
+    border: none;
+        outline: none;
+        background-color: #ff3737;
+        color: #fff;
+        padding: .5em 1em;
+        text-transform: uppercase;
+        font-size: 1em;
+        letter-spacing: 1px;
+        border-radius: 3px;
+        box-shadow: 0 1px 6px var(--shadow-color);
+        transition: box-shadow 0.3s ease; 
+
+        .btn-delete-repor:hover {
+        box-shadow: 0 3px 6px var(--shadow-color)
+        }
+}
+
+.btn-form{
+    background-color: #fff;
+    height: 50vh;
+}
